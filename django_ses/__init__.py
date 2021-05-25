@@ -56,10 +56,6 @@ class SESBackend(BaseEmailBackend):
                  dkim_headers=None, **kwargs):
 
         super(SESBackend, self).__init__(fail_silently=fail_silently, **kwargs)
-        self._access_key_id = aws_access_key or settings.ACCESS_KEY
-        self._access_key = aws_secret_key or settings.SECRET_KEY
-        self._region_name = aws_region_name if aws_region_name else settings.AWS_SES_REGION_NAME
-        self._endpoint_url = aws_region_endpoint if aws_region_endpoint else settings.AWS_SES_REGION_ENDPOINT_URL
         self._throttle = aws_auto_throttle or settings.AWS_SES_AUTO_THROTTLE
 
         self.dkim_domain = dkim_domain or settings.DKIM_DOMAIN
